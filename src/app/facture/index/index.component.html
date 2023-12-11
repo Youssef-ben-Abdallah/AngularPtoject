@@ -1,0 +1,47 @@
+<div class="container">
+  <h2>Les factures de user</h2>
+  <div>Total: {{ totalAmount }}</div>
+  <button type="button" (click)="navigateToPayement()" class="btn btn-primary">
+    Submit Payment
+  </button>
+  <table datatable [dtOptions]="dtOptions" class="row-border hover">
+    <thead>
+      <tr>
+        <th>Select</th>
+        <th>id</th>
+        <th>date</th>
+        <th>total amount</th>
+        <th>regle</th>
+        <th width="250px">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let Facture of Factures" [ngClass]="{'selected-row': selectedInvoices.includes(Facture.invoiceId)}">
+        <td>
+          <!-- Disable the checkbox if the invoice is paid -->
+          <input type="checkbox" [checked]="selectedInvoices.includes(Facture.invoiceId)" (change)="toggleSelection(Facture.invoiceId)"
+            [disabled]="Facture.payer" />
+        </td>
+        <td>FAC00{{Facture.invoiceId}}SCF</td>
+        <td>{{ Facture.dateFacture }}</td>
+        <td>{{ Facture.amount }}</td>
+        <td>{{ Facture.payer ? 'Paid' : 'Unpaid' }}</td>
+        <td>
+          <!-- Show the view button only for paid invoices -->
+          <a *ngIf="Facture.payer" href="#" [routerLink]="['/facture/', Facture.invoiceId, 'view']" class="btn btn-default">
+            <i class="bi bi-info-square-fill"></i>
+          </a>
+          <!-- Show both the view and delete buttons for unpaid invoices -->
+          <ng-container *ngIf="!Facture.payer">
+            <a href="#" [routerLink]="['/facture/', Facture.invoiceId, 'view']" class="btn btn-default">
+              <i class="bi bi-info-square-fill"></i>
+            </a>
+            <button type="button" (click)="deleteProduct(Facture.invoiceId)" class="btn btn-default">
+              <i class="bi bi-trash-fill" style="color:red"></i>
+            </button>
+          </ng-container>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

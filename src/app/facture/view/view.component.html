@@ -1,0 +1,52 @@
+<!-- your-component.component.html -->
+<div style="display: flex; justify-content: center; align-items: center;">
+    <button class="btn btn-primary" (click)="openPDF()">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 9h-4V3H9v6H5l7 7 7-7zm-8 2V5h2v6h1.17L12 13.17 9.83 11H11zm-6 7h14v2H5z"/>
+        </svg>
+    </button>
+</div>
+<br>
+<div class="invoice-container" id="htmlData">
+    
+    <div class="invoice-header">
+        <h2>Facture</h2>
+        <p>Date: {{ facture.dateFacture | date:'medium' }}</p>
+    </div>
+    <div class="invoice-details">
+        <p>ID: {{ facture.invoiceId }}</p>
+        <p>etat: {{ facture.payer ? 'Payé' : 'Non payé' }}</p>
+    </div>
+    <hr>
+    <div class="client-details">
+        <h3>Client Details</h3>
+        <p>Nom : {{ facture.client.prenom }} {{ facture.client.nom }}</p>
+        <p>Email: {{ facture.client.email }}</p>
+        <p>Address: {{ facture.client.adresse }}</p>
+    </div>
+    <hr>
+    <div class="invoice-items">
+        <h3>Les Produits</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>quantité</th>
+                    <th>Prix Unitaire</th>
+                </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngFor="let item of facture.produit; let i = index">
+                <tr>
+                    <td>{{ item.name }}</td>
+                    <td>{{ facture.qte[i] }}</td>
+                    <td>{{ item.price }}</td>
+                </tr>
+            </ng-container>
+            </tbody>
+        </table>
+    </div>
+    <div class="invoice-total">
+        <p>Total: {{ facture.amount }}</p>
+    </div>
+</div>
+<br><br><br><br>

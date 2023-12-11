@@ -1,0 +1,54 @@
+<div class="container">
+
+    <h2>Les factures de Admin</h2>
+
+    
+          
+    
+        <table datatable [dtOptions]="dtOptions" class="row-border hover">
+    
+            <thead>
+    
+                  <tr>
+    
+                    <th>id </th>
+
+                    <th>date</th>
+    
+                    <th>total amount</th>
+
+                    <th>regle</th>
+
+                    <th width="250px">Actions</th>
+    
+                  </tr>
+    
+            </thead>
+    
+            <tbody>
+    
+                  <tr *ngFor="let Facture of Factures">
+    
+                    <td>FAC00{{Facture.invoiceId}}SCF</td>
+
+                    <td>{{ Facture.dateFacture }}</td>
+    
+                    <td>{{ Facture.amount }}</td>
+    
+                    <td> {{ Facture.payer ? 'Paid' : 'Unpaid' }}</td>
+                    <td>
+    
+                      <a href="#" [routerLink]="['/facture/', Facture.invoiceId, 'view']" class="btn btn-default">
+                        <i class="bi bi-info-square-fill"></i>
+                      </a>
+  
+    
+                    </td>
+    
+                  </tr>
+    
+            </tbody>
+    
+        </table>
+    
+     </div>

@@ -1,0 +1,68 @@
+/* Add this CSS to your component's style file or a global style file */
+
+.invoice-container {
+    max-width: 600px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  .invoice-header {
+    text-align: center;
+  }
+  
+  .invoice-details, .client-details, .invoice-items, .invoice-total {
+    margin-top: 20px;
+  }
+  
+  .invoice-details p, .client-details p, .invoice-total p {
+    margin: 5px 0;
+  }
+  
+  hr {
+    margin: 20px 0;
+    border: 1px solid #ddd;
+  }
+  
+  .invoice-items table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  .invoice-items th, .invoice-items td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  /* Optional: Style for Paid and Unpaid status */
+  .invoice-details p:last-child::after {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-left: 5px;
+    border-radius: 50%;
+  }
+  
+  
+  
+  /* Optional: Style for the header and total amount */
+  .invoice-header h2, .invoice-total p {
+    color: #333;
+  }
+  
+  /* Optional: Style for the date */
+  .invoice-header p {
+    color: #888;
+  }
+  
+  /* Optional: Style for the client details */
+  .client-details h3 {
+    color: #555;
+  }
+  

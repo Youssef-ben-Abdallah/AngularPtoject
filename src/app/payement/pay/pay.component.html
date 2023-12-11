@@ -1,0 +1,43 @@
+<div class="container">
+    <h2>Payment</h2>
+  
+    <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" formControlName="amount" [value]="totalAmount" class="form-control" required />
+      </div>
+  
+      <div class="form-group">
+        <label for="client">Client ID:</label>
+        <input type="number" id="client" formControlName="client" class="form-control" required />
+      </div>
+  
+      <div class="form-group">
+        <label for="paymentDate">Payment Date:</label>
+        <input type="date" id="paymentDate" formControlName="paymentDate" class="form-control" />
+      </div>
+  
+      <div class="form-group">
+        <label for="cardHolderName">Card Holder Name:</label>
+        <input type="text" id="cardHolderName" formControlName="cardHolderName" class="form-control" required />
+      </div>
+  
+      <div class="form-group">
+        <label for="creditCardNumber">Credit Card Number:</label>
+        <input type="text" id="creditCardNumber" formControlName="creditCardNumber" class="form-control" required />
+      </div>
+  
+      <div class="form-group">
+        <label for="cvv">CVV:</label>
+        <input type="text" id="cvv" formControlName="cvv" class="form-control" required />
+      </div>
+  
+      <div class="form-group">
+        <label for="expirationDate">Expiration Date:</label>
+        <input type="date" id="expirationDate" formControlName="expirationDate" class="form-control" required />
+      </div>
+  
+      <button type="submit" class="btn btn-primary" [disabled]="paymentForm.invalid">Update Payment</button>
+    </form>
+  </div>
+  

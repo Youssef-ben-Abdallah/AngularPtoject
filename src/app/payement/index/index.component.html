@@ -1,0 +1,20 @@
+<div class="container">
+  <h2>Historique de paiement</h2>
+
+  <table datatable [dtOptions]="dtOptions" class="row-border hover" >
+    <thead>
+      <tr>
+        <th>Paiement ID</th>
+        <th>Totale</th>
+        <th>Date de paiement</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let payment of payement">
+        <td>{{ payment.paymentId }}</td>
+        <td>{{ payment.amount }}</td>
+        <td>{{ payment.paymentDate | date: 'yyyy-MM-dd'  }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
